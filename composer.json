@@ -1,0 +1,17 @@
+{
+    "name": "createlinux/singleton",
+    "autoload": {
+        "psr-4": {
+            "Createlinux\\Singleton\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "createlinux",
+            "email": "howmao@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    }
+}
