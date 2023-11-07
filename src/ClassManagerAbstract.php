@@ -6,7 +6,7 @@ abstract class ClassManagerAbstract
 {
     protected static $instance = [];
 
-    abstract protected static function getClassPath(): string;
+    protected static $classNamespace = '';
 
     private function __construct()
     {
@@ -35,10 +35,11 @@ abstract class ClassManagerAbstract
      */
     final public static function __callStatic($name, $arguments)
     {
-        if(!method_exists(static::class,'getClassPath')){
-            throw new \Exception("getClassPath not exists");
+
+        if(!trim(static::$classNamespace)){
+            throw new \Exception("static variable \$classNamespace required");
         }
-        $logicClass = static::getClassPath() . $name;
+        $logicClass = static::$classNamespace . $name;
         if (!isset(static::$instance[$logicClass])) {
             static::$instance[$logicClass] = new $logicClass(...$arguments);
         }
